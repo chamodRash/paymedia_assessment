@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Message as MessageType } from "../types";
 import Voting from "./Voting";
 import MessageForm from "./MessageForm";
@@ -78,12 +77,12 @@ export default function Message({ message, depth = 0 }: MessageProps) {
                     {message.author.name.charAt(0).toUpperCase()}
                   </div>
                 ) : (
-                  <Image
+                  <img
                     src={message.author.avatar}
                     alt={message.author.name}
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    className="rounded-full w-10 h-10 object-cover"
                     onError={handleImageError}
                   />
                 )}

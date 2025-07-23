@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch, useCurrentUser } from "../store/hooks";
 import { addMessage, addReply } from "../store/messagesSlice";
 import { Button } from "./ui/button";
-import Image from "next/image";
 
 interface MessageFormProps {
   parentId?: string; // If provided, this is a reply form
@@ -99,12 +98,12 @@ export default function MessageForm({
             {currentUser?.name?.charAt(0).toUpperCase() || "U"}
           </div>
         ) : (
-          <Image
+          <img
             src={currentUser?.avatar || "/default-avatar.png"}
             alt={currentUser?.name || "User"}
             width={32}
             height={32}
-            className="rounded-full flex-shrink-0"
+            className="rounded-full flex-shrink-0 w-8 h-8 object-cover"
             onError={() => setImageError(true)}
           />
         )}

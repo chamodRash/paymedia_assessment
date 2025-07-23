@@ -6,19 +6,15 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "randomuser.me",
-        port: "",
-        pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-        pathname: "/**",
+        hostname: "**.randomuser.me",
       },
     ],
+    formats: ["image/webp", "image/avif"],
+    minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
