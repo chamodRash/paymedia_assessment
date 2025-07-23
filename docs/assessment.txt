@@ -1,0 +1,12 @@
+Next-JS, React - Interview Assignment
+Duration: 3 hours
+· Please complete the following UI challenge and deploy to free PaaS. (Ex. Heroku, Vercel). As in the UI, when a user sends the message it should save in redux state and should show newly added messages in UI real time. Use random images for user profile images. Form validation is mandatory (Use react-hook-forms). You can use https://randomuser.me/ for random user image generation
+· Use ReactJS or NextJS (preferred) , and tailwind as CSS Library (must).
+· Use react functional components. ( Don't use class component. )
+· Use Redux as State Management (must).
+1. User should be able to reply to the added messages and the replies should be properly indented under the message.
+2. Users should be able to upvote and downvote the comments.
+· Please send the url of the deployed web application and code base as zip file as reply to the email.
+· UI is provided below and also send as attachment in via email.
+
+
