@@ -26,6 +26,7 @@ export default function MessageForm({
   const dispatch = useAppDispatch();
   const currentUser = useCurrentUser();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Setup react-hook-form with validation
   const {
@@ -93,13 +94,20 @@ export default function MessageForm({
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-start justify-between space-x-4">
         {/* Current user avatar */}
-        <Image
-          src={currentUser?.avatar || "/default-avatar.png"}
-          alt={currentUser?.name || "User"}
-          width={32}
-          height={32}
-          className="rounded-full flex-shrink-0"
-        />
+        {imageError ? (
+          <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xs">
+            {currentUser?.name?.charAt(0).toUpperCase() || "U"}
+          </div>
+        ) : (
+          <Image
+            src={currentUser?.avatar || "/default-avatar.png"}
+            alt={currentUser?.name || "User"}
+            width={32}
+            height={32}
+            className="rounded-full flex-shrink-0"
+            onError={() => setImageError(true)}
+          />
+        )}
 
         {/* Input area */}
         <div className="flex-1">

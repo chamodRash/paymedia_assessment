@@ -18,6 +18,7 @@ interface MessageProps {
 export default function Message({ message, depth = 0 }: MessageProps) {
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [showReplies, setShowReplies] = useState(true); // Show replies by default
+  const [imageError, setImageError] = useState(false);
 
   // Use predefined Tailwind classes for reliable indentation
   const getIndentClass = (depth: number) => {
@@ -31,6 +32,11 @@ export default function Message({ message, depth = 0 }: MessageProps) {
     ];
 
     return indentClasses[Math.min(depth, 5)] || indentClasses[5];
+  };
+
+  // Handle image error
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   // Handle reply button click
@@ -67,13 +73,20 @@ export default function Message({ message, depth = 0 }: MessageProps) {
             <div className="flex items-center space-x-3">
               {/* User avatar */}
               <div className="flex-shrink-0">
-                <Image
-                  src={message.author.avatar}
-                  alt={message.author.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                {imageError ? (
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    {message.author.name.charAt(0).toUpperCase()}
+                  </div>
+                ) : (
+                  <Image
+                    src={message.author.avatar}
+                    alt={message.author.name}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                    onError={handleImageError}
+                  />
+                )}
               </div>
               {/* Author name and timestamp */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center sm:space-x-2">
